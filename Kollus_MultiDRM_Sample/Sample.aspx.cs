@@ -16,22 +16,22 @@ namespace Kollus_MultiDRM_Sample
     public partial class Sample : System.Web.UI.Page
     {
 
-        string accessKey = "BvhF1nzej4WvQ4D4ZWeriiFcZDDDGXXx";
-        string siteKey = "KmGt01H1sO8ApKkfRxE40phf9K9MifaD";
-        string siteId = "JKPB";
-        string securityKey = "fishing";
-        string customKey = "4d5f317f129a4f67e0911947ca2307330ffd91da2e3f4f01f74c18cc2bf4e884";
-        string licenseUrl = "https://license.pallycon.com/ri/licenseManager.do";
-        string certificateUrl = "https://license.pallycon.com/ri/fpsKeyManager.do?siteId=JKPB";
+        string accessKey = "{ACCESS_KEY}"; //Inak Multi DRM Access Key
+        string siteKey = "{SITE_KEY}"; //Inka Multi DRM Site Key
+        string siteId = "{SITE_ID}"; //Inka Multi DRM Site ID
+        string securityKey = "{SECURITY_KEY}"; //Kollus Security Key
+        string customKey = "{CUSTOM_KEY}"; //Kollus Custom User Key
+        string licenseUrl = ""; //Inka License Url
+        string certificateUrl = "{CERTIFICATION_URL}"; //Inka Certification URL(FPS)
         string iv = "0123456789abcdef";
         int duration = 3600;
 
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string uploadFileKey = "20191118-asj7fkt1";
-            string mediaContentKey = "LwjBx2pY";
-            string clientUserId = "catenoidtest";
+            string uploadFileKey = "{UPLOAD_FILE_KEY}"; //Kollus Upload FIle Key
+            string mediaContentKey = "{MEDIA_CONTENT_KEY"; //Kollus Media Content Key
+            string clientUserId = "{HOMEPAGE_USER_ID}"; // End User ID
             
             string webTokenUrl = "https://v.jp.kollus.com/s?jwt=" + System.Web.HttpUtility.UrlEncode( CreateWebtoken(uploadFileKey, mediaContentKey, clientUserId)) + "&custom_key=" + customKey;
             Response.Write(Request.UserAgent + "<br>");
