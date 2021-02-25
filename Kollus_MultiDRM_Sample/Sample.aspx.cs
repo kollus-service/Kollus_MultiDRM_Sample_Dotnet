@@ -97,6 +97,7 @@ namespace Kollus_MultiDRM_Sample
                 JObject inkaPayload = new JObject();
                 JObject inkaToken = new JObject();
                 JObject playBackPolicy = new JObject();
+                JObject security_policy = new JObject();
                 playBackPolicy.Add("limit", true);
                 playBackPolicy.Add("persistent", false);
                 playBackPolicy.Add("duration", duration);
