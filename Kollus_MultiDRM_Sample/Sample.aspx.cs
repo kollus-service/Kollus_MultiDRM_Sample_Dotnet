@@ -25,7 +25,8 @@ namespace Kollus_MultiDRM_Sample
         string certificateUrl = "{CERTIFICATION_URL}"; //Inka Certification URL(FPS)
         string iv = "0123456789abcdef";
         int duration = 3600;
-
+        string videoGateWayKR = "https://v.kr.kollus.com/";
+        string videoGateWayJP = "https://v.jp.kollus.com/";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,7 +34,7 @@ namespace Kollus_MultiDRM_Sample
             string mediaContentKey = "{MEDIA_CONTENT_KEY"; //Kollus Media Content Key
             string clientUserId = "{HOMEPAGE_USER_ID}"; // End User ID
             
-            string webTokenUrl = "https://v.jp.kollus.com/s?jwt=" + System.Web.HttpUtility.UrlEncode( CreateWebtoken(uploadFileKey, mediaContentKey, clientUserId)) + "&custom_key=" + customKey;
+            string webTokenUrl = videoGateWayKR + "s?jwt=" + System.Web.HttpUtility.UrlEncode( CreateWebtoken(uploadFileKey, mediaContentKey, clientUserId)) + "&custom_key=" + customKey;
             Response.Write(Request.UserAgent + "<br>");
             string[] drmType = BrowserCheck(Request.UserAgent);
             if (drmType != null)
