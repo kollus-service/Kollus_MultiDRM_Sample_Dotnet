@@ -152,7 +152,7 @@ namespace Kollus_MultiDRM_Sample
                             result[1] = "dash";
                             break;
                         case "Edge":
-                            result[0] = "PlayReady";
+                            result[0] = "Widevine";
                             result[1] = "dash";
                             break;
                         case "Edg":
