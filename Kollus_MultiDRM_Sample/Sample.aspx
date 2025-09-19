@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <iframe runat="server" id="playerFrame" width="800px" height="400"></iframe>
+            <iframe runat="server" id="playerFrame" width="800px" height="400" allowfullscreen webkitallowfullscreen mozallowfullscreen allow="encrypted-media;autoplay"></iframe>
         </div>
     </form>
 </body>
