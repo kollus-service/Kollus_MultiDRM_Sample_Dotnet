@@ -25,8 +25,8 @@ namespace Kollus_MultiDRM_Sample
         string certificateUrl = "{CERTIFICATION_URL}"; //Inka Certification URL(FPS)
         string iv = "0123456789abcdef";
         int duration = 3600;
-        string videoGateWayKR = "https://v.kr.kollus.com/";
-        string videoGateWayJP = "https://v.jp.kollus.com/";
+        string videoGateWayKR = "https://v.kr.kollus.com/"; //한국 리전, kr 고객사일 경우 사용
+        string videoGateWayJP = "https://v.jp.kollus.com/"; //일본 리전, jp 고객사일 경우 사용
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -40,7 +40,6 @@ namespace Kollus_MultiDRM_Sample
             if (drmType != null)
             {
                 Response.Write(drmType[0] + " " + drmType[1]);
-
                 playerFrame.Attributes["src"] = webTokenUrl;
             }
             Response.Write("<a href='" + webTokenUrl + "'>Link</a>");
@@ -103,7 +102,7 @@ namespace Kollus_MultiDRM_Sample
                 playBackPolicy.Add("persistent", false);
                 playBackPolicy.Add("duration", duration);
                 inkaToken.Add("playback_policy", playBackPolicy);
-                //inkaToken.Add("allow_mobile_abnormal_device", false);
+                inkaToken.Add("allow_mobile_abnormal_device", true);
                 inkaToken.Add("playready_security_level", 150);
 
                 var token = Convert.ToBase64String(AESEncrypt256(inkaToken.ToString(), siteKey));
@@ -183,7 +182,7 @@ namespace Kollus_MultiDRM_Sample
                             result = null;
                             break;
                     }
-                    if (browser.Contains("Macintosh", StringComparison.OrdinalIgnoreCase) && browser.Contains("Edg", StringComparison.OrdinalIgnoreCase))
+                    if (browser.Contains("Macintosh", StringComparison.OrdinalIgnoreCase) && browser.Contains("Edg", StringComparison.OrdinalIgnoreCase)) //mac os 엣지 브라우저 대응
                     {
                         drmType = "Widevine";
                         streamingType = "dash";
