@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 using System.Web;
@@ -31,7 +31,7 @@ namespace Kollus_MultiDRM_Sample
         protected void Page_Load(object sender, EventArgs e)
         {
             string uploadFileKey = "{UPLOAD_FILE_KEY}"; //Kollus Upload FIle Key
-            string mediaContentKey = "{MEDIA_CONTENT_KEY"; //Kollus Media Content Key
+            string mediaContentKey = "{MEDIA_CONTENT_KEY}"; //Kollus Media Content Key
             string clientUserId = "{HOMEPAGE_USER_ID}"; // End User ID
             
             string webTokenUrl = videoGateWayKR + "s?jwt=" + System.Web.HttpUtility.UrlEncode( CreateWebtoken(uploadFileKey, mediaContentKey, clientUserId)) + "&custom_key=" + customKey;
@@ -132,7 +132,7 @@ namespace Kollus_MultiDRM_Sample
         {
             string[] result = new string[2];
 
-            string[] browsers = new string[] { "Trident", "MSIE", "Opera", "Safari", "Chrome", "Firefox", "Edg", "Edge", "CriOS" }; //windows 에서는 순서가 역순
+            string[] browsers = new string[] { "Trident", "MSIE", "Opera", "Safari", "Chrome", "Firefox", "Edg", "Edge", "CriOS" }; //windows 에서는 순서가 역순, 역순이 아닐 경우 아래 배열 사용
 //            string[] browsers = new string[] { "Safari", "CriOS", "Edge", "Edg", "Firefox", "Chrome", "Opera", "MSIE", "Trident" }; //기본 순서
 
             foreach (string browser in browsers)
@@ -182,10 +182,10 @@ namespace Kollus_MultiDRM_Sample
                             result = null;
                             break;
                     }
-                    if (browser.Contains("Macintosh", StringComparison.OrdinalIgnoreCase) && browser.Contains("Edg", StringComparison.OrdinalIgnoreCase)) //mac os 엣지 브라우저 대응
+                    if (userAgent.Contains("Macintosh") && userAgent.Contains("Edg")) //mac os 엣지 브라우저 대응
                     {
-                        drmType = "Widevine";
-                        streamingType = "dash";
+                        result[0] = "Widevine";
+                        result[1] = "dash";
                     }
                 }
             }
