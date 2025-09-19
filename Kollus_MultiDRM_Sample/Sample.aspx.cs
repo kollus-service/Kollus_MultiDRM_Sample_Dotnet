@@ -133,8 +133,8 @@ namespace Kollus_MultiDRM_Sample
         {
             string[] result = new string[2];
 
-            string[] browsers = new string[] { "Trident", "MSIE", "Opera", "Safari", "Chrome", "Firefox", "Edg", "Edge", "CriOS" };
-//            string[] browsers = new string[] { "Safari", "CriOS", "Edge", "Edg", "Firefox", "Chrome", "Opera", "MSIE", "Trident" };
+            string[] browsers = new string[] { "Trident", "MSIE", "Opera", "Safari", "Chrome", "Firefox", "Edg", "Edge", "CriOS" }; //windows 에서는 순서가 역순
+//            string[] browsers = new string[] { "Safari", "CriOS", "Edge", "Edg", "Firefox", "Chrome", "Opera", "MSIE", "Trident" }; //기본 순서
 
             foreach (string browser in browsers)
             {
@@ -182,6 +182,11 @@ namespace Kollus_MultiDRM_Sample
                         default:
                             result = null;
                             break;
+                    }
+                    if (browser.Contains("Macintosh", StringComparison.OrdinalIgnoreCase) && browser.Contains("Edg", StringComparison.OrdinalIgnoreCase))
+                    {
+                        drmType = "Widevine";
+                        streamingType = "dash";
                     }
                 }
             }
